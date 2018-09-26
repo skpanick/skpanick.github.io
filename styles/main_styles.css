@@ -556,7 +556,7 @@ section
 }
 .about_title
 {
-	font-size: 30px;
+	font-size: 25px;
 	font-weight: 700;
 	color: #100f3a;
 }
@@ -566,7 +566,7 @@ section
 }
 .loaders
 {
-	margin-top: 98px;
+	margin-top: 20px;
 }
 .loader_container
 {
@@ -586,7 +586,7 @@ section
 {
 	position: absolute;
 	left: 50%;
-	bottom: 15%;
+	bottom: 20%;
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
 	-ms-transform: translateX(-50%);

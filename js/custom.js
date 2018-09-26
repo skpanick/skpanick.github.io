@@ -140,11 +140,11 @@ $(document).ready(function()
 						color: '#8583e1',
 						// This has to be the same size as the maximum width to
 						// prevent clipping
-						strokeWidth: 1,
-						trailWidth: 20,
+						strokeWidth: 5,
+						trailWidth: 3,
 						trailColor: '#e5e6e8',
-						easing: 'easeInOut',
-						duration: 1400,
+						easing: 'bounce',
+						duration: 2500,
 						text:
 						{
 							autoStyleContainer: false

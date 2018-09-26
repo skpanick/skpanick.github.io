@@ -8,7 +8,7 @@
 2. Set Header
 3. Init Menu
 4. Init Progress Bars
-5. Init Milestones
+5. Init Loaders
 
 
 ******************************/
@@ -54,8 +54,8 @@ $(document).ready(function()
 	});
 
 	initMenu();
+	initLoaders();
 	initProgressBars();
-	initMilestones();
 
 	/* 
 
@@ -147,8 +147,8 @@ $(document).ready(function()
 		    		var pbar = new ProgressBar.Line(eleName, 
 		    		{
 		    			strokeWidth: 1,
-						easing: 'easeInOut',
-						duration: 1400,
+						easing: 'bounce',
+						duration: 2500,
 						color: eleGradient,
 						trailColor: '#ffffff',
 						trailWidth: 1,
@@ -183,54 +183,67 @@ $(document).ready(function()
 
 	*/
 
-	function initMilestones()
+	function initLoaders()
 	{
-		if($('.milestone_counter').length)
+		if($('.loader').length)
 		{
-			var milestoneItems = $('.milestone_counter');
+			var loaders = $('.loader');
 
-	    	milestoneItems.each(function(i)
-	    	{
-	    		var ele = $(this);
-	    		var endValue = ele.data('end-value');
-	    		var eleValue = ele.text();
+			loaders.each(function()
+			{
+				var loader = this;
+				var endValue = $(loader).data('perc');
 
-	    		/* Use data-sign-before and data-sign-after to add signs
-	    		infront or behind the counter number (+, k, etc) */
-	    		var signBefore = "";
-	    		var signAfter = "";
-
-	    		if(ele.attr('data-sign-before'))
-	    		{
-	    			signBefore = ele.attr('data-sign-before');
-	    		}
-
-	    		if(ele.attr('data-sign-after'))
-	    		{
-	    			signAfter = ele.attr('data-sign-after');
-	    		}
-
-	    		var milestoneScene = new ScrollMagic.Scene({
+				var loaderScene = new ScrollMagic.Scene({
 		    		triggerElement: this,
 		    		triggerHook: 'onEnter',
 		    		reverse:false
 		    	})
 		    	.on('start', function()
 		    	{
-		    		var counter = {value:eleValue};
-		    		var counterTween = TweenMax.to(counter, 4,
-		    		{
-		    			value: endValue,
-		    			roundProps:"value", 
-						ease: Circ.easeOut, 
-						onUpdate:function()
+		    		var cbar = new ProgressBar.Circle(loader,
+					{
+						color: '#8583e1',
+						// This has to be the same size as the maximum width to
+						// prevent clipping
+						strokeWidth: 1,
+						trailWidth: 10,
+						trailColor: '#e5e6e8',
+						easing: 'bounce',
+						duration: 2500,
+						text:
 						{
-							document.getElementsByClassName('milestone_counter')[i].innerHTML = signBefore + counter.value + signAfter;
+							autoStyleContainer: false
+						},
+						from:{ color: '#8583e1', width: 1 },
+						to: { color: '#8583e1', width: 1 },
+						// Set default step function for all animate calls
+						step: function(state, circle)
+						{
+							circle.path.setAttribute('stroke', state.color);
+							circle.path.setAttribute('stroke-width', state.width);
+
+							var value = Math.round(circle.value() * 100);
+							if (value === 0)
+							{
+								circle.setText('0%');
+							}
+							else
+							{
+								circle.setText(value + "%");
+							}
 						}
-		    		});
+					});
+					cbar.text.style.fontFamily = '"Montserrat", sans-serif';
+					cbar.text.style.fontSize = '44px';
+					cbar.text.style.fontWeight = '700';
+					cbar.text.style.color = "#100f3a";
+
+
+					cbar.animate(endValue);  // Number from 0.0 to 1.0
 		    	})
 			    .addTo(ctrl);
-	    	});
+			});
 		}
 	}
 

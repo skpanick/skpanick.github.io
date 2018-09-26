@@ -684,11 +684,11 @@ section
 }
 .progress_bars
 {
-	margin-top: 92px;
+	margin-top: 25px;
 }
 .pb_col
 {
-	margin-bottom: 19px;
+	margin-bottom: 50px;
 }
 .progress_bars .container-fluid
 {
@@ -712,18 +712,18 @@ section
 }
 .p_bar_title
 {
-	font-size: 13px;
+	font-size: 11px;
 	color: #100f3a;
-	font-weight: 500;
+	font-weight: bold;
 	line-height: 0.75;
-	margin-bottom: 17px;
+	margin-bottom: 15px;
 }
 .progressbar-text
 {
 	font-size: 13px;
 	color: #100f3a;
 	font-weight: 500;
-	top: -33px !important;
+	top: 3px !important;
 }
 
 /*********************************
@@ -753,4 +753,60 @@ section
 	font-weight: 500;
 	color: #838383;
 	margin-top: -1px;
+}
+/*******************************
+5.3 Loaders
+*******************************/
+.about_text
+{
+	margin-top: 31px;
+}
+.loaders
+{
+	margin-top: 50px;
+}
+.loader_container
+{
+	width: 25%;
+	height: 297px;
+	float: left;
+	padding-bottom: 70px;
+}
+.loader
+{
+	width: 195px;
+	height: 195px;
+	margin: 0 auto;
+	background: transparent;
+}
+.loader_content
+{
+	position: absolute;
+	left: 50%;
+	bottom: 20%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+	font-size: 18px;
+	font-weight: 500;
+	color: #232323;
+	white-space: nowrap;
+	text-align: center;
+}
+.loader_title
+{
+	font-size: 16px;
+	font-weight: 700;
+	color: #100f3a;
+	text-transform: uppercase;
+	line-height: 0.75;
+}
+.loader_subtitle
+{
+	font-size: 14px;
+	font-weight: 500;
+	color: #7a798c;
+	margin-top: 12px;
 }
